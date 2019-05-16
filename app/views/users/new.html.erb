@@ -1,3 +1,26 @@
 <% provide(:title, "Sign Up") %>
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1 class="col-md-5 offset-md-3">Sign up</h1>
+<%= form_with(model: @user, local: true) do |form| %>
+  <div class="col-md-5 offset-md-3">
+    <%= render 'shared/error_messages' %>
+  </div>
+  <div class="form-group col-md-5 offset-md-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-5 offset-md-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-5 offset-md-3">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-5 offset-md-3">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-5 offset-md-3">
+    <%= form.submit class: 'btn btn-default btn-primary mt-3' %>
+  </div>
+<% end %>
