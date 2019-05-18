@@ -26,14 +26,22 @@
             </li>
           </ul>
           <span class="navbar-text">
-            Navbar text with an inline element
+            <% if logged_in? %>
+              <p>Welcome! <%= current_user.name %>
+              <%= link_to "Log out", logout_path, method: :delete %>
+            </p>
+            <% else %>
+              <%= link_to "Log in", login_path %>
+            <% end %>
+
           </span>
         </div>
       </div>
     </nav>
     <div class="container">
+      <%= render 'shared/flash_messages' if !flash.empty? %>
       <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+      <!--  <%= debug(params) if Rails.env.development? %> -->
     </div>
   </body>
 </html>
